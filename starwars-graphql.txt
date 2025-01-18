@@ -123,3 +123,79 @@ query TotalCharacterCountOnAllFilms {
     }
   }
 }
+
+// C1: Full Character Profiles: Compile a full profile for a given character, including their films, starships, and homeworld.
+
+query getCharacterProfile {
+  person(id: "cGVvcGxlOjE=") {
+    filmConnection {
+        films {
+            title
+        }
+    }
+    starshipConnection {
+        starships {
+            name
+        }
+    }
+    homeworld {
+        name
+    }
+  }
+}
+
+// C2: Link Characters with Their Planets: Query the first 5 characters, including the name and population of their homeworld.
+
+query getFiveCharactersNameHomeworldPopulation {
+    allPeople(first: 5) {
+        people {
+            name
+            homeworld {
+                name
+                population
+            }
+        }
+    }
+}
+
+// C3: Vehicles, Their Pilots, and Pilots' Species: For the first 3 vehicles, list their names, pilots, and the species of those pilots.
+
+query getFirstThreeVehicleNamesPilotWithSpecies {
+    allVehicles(first: 3) {
+        vehicles {
+            name
+            pilotConnection {
+                pilots {
+                    name
+                    species {
+                        name
+                    }
+                }
+            }
+        }
+    }
+}
+
+// C4: Films and Their Associated Entities: For the first 3 films, list all related characters, planets, and starships.
+
+query getFirstThreeFilmsCharactersPlanetsStarships {
+    allFilms(first: 3) {
+        films {
+            characterConnection {
+                characters {
+                    name
+                }
+            }
+            planetConnection {
+                planets {
+                    name
+                }
+            }
+            starshipConnection {
+                starships {
+                    name
+                }
+            }
+        }
+    }
+}
