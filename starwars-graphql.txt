@@ -1,0 +1,88 @@
+https://swapi-graphql.netlify.app/graphql
+
+// B1. List All Films: Retrieve the titles of all films available in SWAPI.
+
+query getAllFilmTitles {
+  allFilms {
+    films {
+      title
+    }
+  }
+}
+
+// B2. Fetch a Specific Character: Get the name of a specific character using their unique ID.
+
+query getSpecificPerson {
+  person(id: "cGVvcGxlOjE=") {
+    name
+  }
+}
+
+// B3. Explore Planets: Get the names of the first 5 planets in the Star Wars universe.
+
+query getFirstFivePlanets {
+  allPlanets(first: 5) {
+    planets {
+        name
+    }
+  }
+}
+
+// B4. Starships Information: Fetch names and models of 3 starships.
+
+query getThreeStarshipModelAndName {
+    allStarships(first: 3) {
+        starships {
+            name
+            model
+        }
+    }
+}
+
+// I1: Character and Their Starships: For each of the first 5 characters, list the names of starships they've piloted.
+
+query getStarshipsForFivePeople {
+    allPeople(first: 5) {
+        people {
+            name
+            starshipConnection {
+                starships {
+                    name
+                }
+            }
+        }
+    }
+}
+
+// I2: Species and Their Languages: Retrieve names and languages of 5 species.
+
+query getFiveSpeciesNameLanguage {
+    allSpecies(first: 5) {
+        species {
+            name
+            language
+        }
+    }
+}
+
+// I3: Planets and Their Climates: Query for the names and climates of 5 planets.
+
+query getFivePlanetsNameClimates {
+    allPlanets(first: 5) {
+        planets {
+            name
+            climates
+        }
+    }
+}
+
+// I4: Vehicles and Their Costs: Get names and cost in credits for 3 vehicles.
+
+query getThreeVehiclesNameCost {
+    allVehicles(first: 3) {
+        vehicles {
+            name 
+            costInCredits
+        }
+    }
+}
